@@ -1,0 +1,158 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================
+   EARTHGANG O.G. Tattoo Studio — Global Styles
+   ============================================ */
+
+:root {
+  --brand-black:    #0A0A0A;
+  --brand-red:      #D70000;
+  --brand-gold:     #D4AF37;
+  --brand-dark:     #191919;
+  --brand-dark-2:   #222222;
+  --brand-white:    #F5F5F5;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--brand-black);
+  color: var(--brand-white);
+  font-family: var(--font-inter), 'Noto Sans Thai', sans-serif;
+}
+
+/* ---- Scrollbar ---- */
+::-webkit-scrollbar        { width: 6px; }
+::-webkit-scrollbar-track  { background: #111; }
+::-webkit-scrollbar-thumb  { background: #D70000; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #AA0000; }
+
+/* ---- Selection ---- */
+::selection { background: #D70000; color: #fff; }
+
+/* ---- Typography Utilities ---- */
+@layer components {
+  .heading-display {
+    @apply font-display tracking-widest uppercase;
+  }
+
+  .text-gradient-red {
+    background: linear-gradient(135deg, #D70000, #FF4444);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .text-gradient-gold {
+    background: linear-gradient(135deg, #D4AF37, #F0D060);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* ---- Cards ---- */
+  .card-dark {
+    @apply bg-brand-dark border border-brand-dark-3 rounded-xl;
+  }
+
+  .card-hover {
+    @apply transition-all duration-300 hover:border-brand-red hover:shadow-red-glow;
+  }
+
+  /* ---- Buttons ---- */
+  .btn-primary {
+    @apply bg-brand-red text-white font-bold px-8 py-3 rounded-lg
+           transition-all duration-300
+           hover:bg-brand-red-dark hover:shadow-red-glow
+           active:scale-95 cursor-pointer;
+  }
+
+  .btn-secondary {
+    @apply bg-transparent text-white font-bold px-8 py-3 rounded-lg
+           border border-brand-red
+           transition-all duration-300
+           hover:bg-brand-red hover:shadow-red-glow
+           active:scale-95 cursor-pointer;
+  }
+
+  .btn-gold {
+    @apply bg-brand-gold text-brand-black font-bold px-8 py-3 rounded-lg
+           transition-all duration-300
+           hover:shadow-gold-glow hover:brightness-110
+           active:scale-95 cursor-pointer;
+  }
+
+  /* ---- Inputs ---- */
+  .input-dark {
+    @apply w-full bg-brand-dark-2 border border-brand-dark-3 text-white
+           rounded-lg px-4 py-3 text-sm
+           focus:outline-none focus:border-brand-red focus:ring-1 focus:ring-brand-red
+           placeholder:text-brand-gray
+           transition-colors duration-200;
+  }
+
+  /* ---- Sections ---- */
+  .section-padding {
+    @apply px-4 sm:px-6 lg:px-8 py-16 lg:py-24;
+  }
+
+  .container-max {
+    @apply max-w-7xl mx-auto;
+  }
+
+  /* ---- Divider ---- */
+  .divider-red {
+    @apply w-16 h-1 bg-brand-red rounded-full;
+  }
+
+  /* ---- Badge ---- */
+  .badge {
+    @apply inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider;
+  }
+
+  .badge-red {
+    @apply badge bg-brand-red text-white;
+  }
+
+  .badge-gold {
+    @apply badge bg-brand-gold text-brand-black;
+  }
+
+  /* ---- Status Pills ---- */
+  .status-pending    { @apply bg-yellow-900 text-yellow-300 badge; }
+  .status-confirmed  { @apply bg-green-900 text-green-300 badge; }
+  .status-completed  { @apply bg-blue-900 text-blue-300 badge; }
+  .status-cancelled  { @apply bg-gray-800 text-gray-400 badge; }
+  .status-deposit    { @apply bg-orange-900 text-orange-300 badge; }
+
+  /* ---- Membership Tier Colors ---- */
+  .tier-bronze   { @apply text-amber-600; }
+  .tier-silver   { @apply text-gray-400; }
+  .tier-gold     { @apply text-yellow-500; }
+  .tier-platinum { @apply text-slate-300; }
+}
+
+/* ---- Animations ---- */
+@keyframes shimmer {
+  0%   { background-position: -1000px 0; }
+  100% { background-position: 1000px 0; }
+}
+
+.shimmer {
+  background: linear-gradient(90deg, #1a1a1a 25%, #2a2a2a 50%, #1a1a1a 75%);
+  background-size: 1000px 100%;
+  animation: shimmer 2s infinite linear;
+}
+
+/* ---- Thai font support ---- */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;500;600;700&display=swap');
